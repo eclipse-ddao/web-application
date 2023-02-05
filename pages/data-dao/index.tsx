@@ -140,7 +140,7 @@ the team section in your data dao."
         )}
       </div>
       {/* {JSON.stringify(daos)} */}
-      <div className="fixed w-56 h-56 -bottom-12 right-96">
+      <div className="fixed w-56 h-56 -bottom-12 right-2">
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>
     </MainContainer>
