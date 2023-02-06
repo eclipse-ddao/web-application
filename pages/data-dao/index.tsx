@@ -78,10 +78,11 @@ const DataDao = () => {
   };
 
   return (
-    <MainContainer
-      heading="Create your Own Data DAO"
-      active="data-dao"
-      showMenu={false}>
+    // <MainContainer
+    //   heading="Create your Own Data DAO"
+    //   active="data-dao"
+    //   showMenu={false}>
+    <>
       <div className="flex flex-col max-w-2xl gap-8 p-10 mx-auto border border-grey-200 rounded-xl ">
         <div className="">
           <Input
@@ -156,7 +157,8 @@ the team section in your data dao."
       <div className="fixed w-56 h-56 -bottom-12 right-2">
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>
-    </MainContainer>
+    </>
+    // </MainContainer>
   );
 };
 

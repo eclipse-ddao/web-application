@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { FC, ReactNode } from "react";
 const LeftInfoBar = ({ active }: { active: string }) => {
   const router = useRouter();
+  const path = router.pathname;
 
   const details = [
     {
@@ -74,7 +75,7 @@ const LeftInfoBar = ({ active }: { active: string }) => {
   return (
     <div className="flex flex-col col-span-3 gap-1 p-8">
       {details.map((info, key) => {
-        const isActive = info.route === active;
+        const isActive = "/" + info.route === path;
         return (
           <div
             className={`flex font-medium text-lg items-center gap-4  pl-6 py-3 pr-16 text-gray-500 ${

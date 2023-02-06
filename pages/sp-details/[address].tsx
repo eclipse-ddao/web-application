@@ -34,49 +34,49 @@ const StorageProviderDetail = () => {
   };
 
   return (
-    <MainContainer heading="Storage Provider Details" active="big-file">
-      <div className="flex flex-col gap-12">
-        <div className="flex flex-col gap-8 p-4 ">
-          <div className="flex items-center justify-between">
-            <div
-              className="font-semibold cursor-pointer text-brand-700 hover:text-brand-800 hover:underline"
-              onClick={() => router.back()}>
-              Go back
-            </div>
-            <Button onClick={handleSubmit}>Select</Button>
+    // <MainContainer heading="Storage Provider Details" active="big-file">
+    <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-8 p-4 ">
+        <div className="flex items-center justify-between">
+          <div
+            className="font-semibold cursor-pointer text-brand-700 hover:text-brand-800 hover:underline"
+            onClick={() => router.back()}>
+            Go back
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={storageProviderInfo?.avatar_url}
-            alt="SP Avatar"
-            width={100}
-            height={100}
-            className="overflow-hidden rounded-full"
+          <Button onClick={handleSubmit}>Select</Button>
+        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={storageProviderInfo?.avatar_url}
+          alt="SP Avatar"
+          width={100}
+          height={100}
+          className="overflow-hidden rounded-full"
+        />
+        <div className="flex flex-row gap-4">
+          <Input
+            label="Name"
+            value={storageProviderInfo?.name}
+            fullWidth
+            disabled
           />
-          <div className="flex flex-row gap-4">
-            <Input
-              label="Name"
-              value={storageProviderInfo?.name}
-              fullWidth
-              disabled
-            />
-            <Input
-              label="Contact Info"
-              disabled
-              fullWidth
-              value={storageProviderInfo?.contact_info}
-            />
-          </div>
-          <div>
-            <Input
-              label="Reputation Link"
-              fullWidth
-              value={storageProviderInfo?.reputation_link}
-            />
-          </div>
+          <Input
+            label="Contact Info"
+            disabled
+            fullWidth
+            value={storageProviderInfo?.contact_info}
+          />
+        </div>
+        <div>
+          <Input
+            label="Reputation Link"
+            fullWidth
+            value={storageProviderInfo?.reputation_link}
+          />
         </div>
       </div>
-    </MainContainer>
+    </div>
+    // </MainContainer>
   );
 };
 

@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import Alert from "../../components/common/Alert";
 import Button from "../../components/common/Button";
@@ -45,6 +45,13 @@ const BigFile = () => {
   const [data, setData] = useState(initialValue);
   const [filter, setFilter] = useState("open");
 
+  useEffect(() => {
+    if (!selectedDaoAddress) {
+      toast("Please select a Data DAO");
+      router.push("/data-dao");
+    }
+  }, [selectedDaoAddress, router]);
+
   const handleChange = (value: string | number | Date, name: string) => {
     console.log(value);
     setData({
@@ -85,7 +92,8 @@ const BigFile = () => {
   });
 
   return (
-    <MainContainer heading="Big File" active="big-file">
+    // <MainContainer heading="Big File" active="big-file">
+    <>
       <div className="flex flex-col gap-12">
         <div className="flex flex-col gap-4">
           <h1 className="font-semibold text-grey-600">Treasury Balance</h1>
@@ -274,7 +282,8 @@ const BigFile = () => {
           </div>
         </div>
       </Dialog>
-    </MainContainer>
+      {/* </MainContainer> */}
+    </>
   );
 };
 

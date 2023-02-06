@@ -43,6 +43,36 @@ const MainContainer: FC<HomeContainerProps> = ({
     }
   }, [walletAddress, router]);
 
+  const getHeading = () => {
+    console.log("___ROUTE", router.pathname);
+    switch (router.pathname) {
+      case "/home": {
+        return "Getting Started";
+      }
+      case "/add-members": {
+        return "Add members";
+      }
+      case "/big-file": {
+        return "Big File";
+      }
+      case "/profile": {
+        return "Profile";
+      }
+      case "/big-file-detail/[id]": {
+        return "Big File Details";
+      }
+      case "/sp-details/[address]": {
+        return "Storage Provider Details";
+      }
+      case "/data-dao": {
+        return "Create Data Dao";
+      }
+      default: {
+        return "Eclipse";
+      }
+    }
+  };
+
   return (
     <div className="relative flex w-screen h-screen bg-fixed bg-white bg-cover font-poppins bg-paper">
       <LeftColorBar />
@@ -61,7 +91,7 @@ const MainContainer: FC<HomeContainerProps> = ({
             </div>
           </div>
           <div className="flex justify-between w-full max-w-5xl col-span-9 px-2 font-semibold">
-            {heading}
+            {getHeading()}
             <div className="flex items-center gap-2 cursor-default">
               <div className="font-semibold text-brand-700">
                 {walletAddress.toString().slice(0, 5) +

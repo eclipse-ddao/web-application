@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MainContainer from "../components/common/MainContainer";
+import { useRouter } from "next/router";
 // import { ReactQueryDevtools } from "react-query/devtools";
 
 // import "@rainbow-me/rainbowkit/styles.css";
@@ -35,12 +37,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   //   provider,
   // });
 
+  const router = useRouter();
+  const path = router.pathname;
+
+  const dontShowMainContainer =
+    path === "/" ||
+    path === "/getting-started" ||
+    path.startsWith("/storage-provider");
+
   return (
     // <WagmiConfig client={wagmiClient}>
     //   <RainbowKitProvider theme={darkTheme()} chains={chains}>
     <QueryClientProvider client={queryClient}>
       <title>Eclipse</title>
-      <Component {...pageProps} />
+      {dontShowMainContainer ? (
+        <Component {...pageProps} />
+      ) : (
+        <MainContainer heading="eclipse" active="home">
+          <Component {...pageProps} />
+        </MainContainer>
+      )}
+
       <Toaster />
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>

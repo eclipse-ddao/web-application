@@ -1,9 +1,10 @@
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 
-import MainContainer from "../../components/common/MainContainer";
 import { useDaoInfo } from "../../hooks/queries/useDaoInfo";
 import {
   useSelectedDaoAddress,
@@ -12,13 +13,22 @@ import {
 import { LH_KEY } from "../../utils/constants";
 
 const Profile = () => {
+  const router = useRouter();
   const [walletAddress] = useWalletAddress();
   const [selectedDaoAddress] = useSelectedDaoAddress();
 
   const { data: dao } = useDaoInfo(selectedDaoAddress);
 
+  useEffect(() => {
+    if (!selectedDaoAddress) {
+      toast("Please select a Data DAO");
+      router.push("/data-dao");
+    }
+  }, [selectedDaoAddress, router]);
+
   return (
-    <MainContainer heading="Profile" active={"profile"}>
+    // <MainContainer heading="Profile" active={"profile"}>
+    <>
       <div className="flex flex-col max-w-2xl gap-8 p-10 mx-auto border border-grey-200 rounded-xl ">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -59,7 +69,8 @@ const Profile = () => {
       <div className="fixed w-56 h-56 -bottom-12 right-96">
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>
-    </MainContainer>
+    </>
+    // </MainContainer>
   );
 };
 
