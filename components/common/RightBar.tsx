@@ -74,7 +74,7 @@ const ContactInfo: FC<ContactType> = ({ image, name, address }) => {
   return (
     <div className="flex items-center gap-4">
       <div className="w-10 h-10 overflow-hidden rounded-full">
-        {image.length > 0 ? (
+        {image?.length > 0 ? (
           //  eslint-disable-next-line @next/next/no-img-element
           <img src={image} alt={"member image"} />
         ) : (
@@ -87,7 +87,7 @@ const ContactInfo: FC<ContactType> = ({ image, name, address }) => {
           />
         )}
       </div>
-      {name.length > 0 ? (
+      {name?.length > 0 ? (
         <span className="text-xs font-semibold text-grey-800 ">{name}</span>
       ) : (
         <span className="text-xs font-semibold text-grey-800">

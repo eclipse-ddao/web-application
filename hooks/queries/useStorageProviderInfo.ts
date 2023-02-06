@@ -6,7 +6,7 @@ export const useStorageProviderInfo = (spAddress: any) => {
     ["storage-provider", spAddress],
     () => getStorageProviderInfo(spAddress),
     {
-      enabled: spAddress.length > 0,
+      enabled: !!spAddress && spAddress?.length > 0,
       retry: false,
       retryOnMount: false,
       refetchOnWindowFocus: false,
