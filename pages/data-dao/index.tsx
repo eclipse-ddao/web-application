@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MainContainer from "../../components/common/MainContainer";
 import Input from "../../components/common/Input";
 import TextArea from "../../components/common/TextArea";
 import Button from "../../components/common/Button";
@@ -78,10 +77,6 @@ const DataDao = () => {
   };
 
   return (
-    // <MainContainer
-    //   heading="Create your Own Data DAO"
-    //   active="data-dao"
-    //   showMenu={false}>
     <>
       <div className="flex flex-col max-w-2xl gap-8 p-10 mx-auto border border-grey-200 rounded-xl ">
         <div className="">
@@ -158,7 +153,6 @@ the team section in your data dao."
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>
     </>
-    // </MainContainer>
   );
 };
 

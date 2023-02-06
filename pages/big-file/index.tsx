@@ -8,7 +8,6 @@ import Alert from "../../components/common/Alert";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 
-import MainContainer from "../../components/common/MainContainer";
 import Select from "../../components/common/Select";
 import TextArea from "../../components/common/TextArea";
 import { useAddBigFile } from "../../hooks/mutations/useAddBigFile";
@@ -92,7 +91,6 @@ const BigFile = () => {
   });
 
   return (
-    // <MainContainer heading="Big File" active="big-file">
     <>
       <div className="flex flex-col gap-12">
         <div className="flex flex-col gap-4">
@@ -282,7 +280,6 @@ const BigFile = () => {
           </div>
         </div>
       </Dialog>
-      {/* </MainContainer> */}
     </>
   );
 };

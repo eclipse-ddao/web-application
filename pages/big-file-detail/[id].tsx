@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import Input from "../../components/common/Input";
 
-import MainContainer from "../../components/common/MainContainer";
 import TextArea from "../../components/common/TextArea";
 import { useBigFileInfo } from "../../hooks/queries/useBigFileInfo";
 
@@ -32,7 +31,6 @@ const BigFileDetail = () => {
   };
 
   return (
-    // <MainContainer heading="Big File Details" active="big-file">
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-8 p-4 ">
         <div className="flex">
@@ -142,7 +140,6 @@ const BigFileDetail = () => {
         </div>
       </div>
     </div>
-    // </MainContainer>
   );
 };
 

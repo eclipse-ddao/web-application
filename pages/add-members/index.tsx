@@ -6,7 +6,6 @@ import Alert from "../../components/common/Alert";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 
-import MainContainer from "../../components/common/MainContainer";
 import { useAddMember } from "../../hooks/mutations/useAddMember";
 import { useAddMemberSmartContract } from "../../hooks/mutations/useAddMemberSmartContract";
 import { useSelectedDaoAddress } from "../../hooks/state/useAppState";
@@ -61,7 +60,6 @@ const AddMembers = () => {
   };
 
   return (
-    // <MainContainer heading="Add members" active={"add-members"}>
     <div className="flex flex-row justify-between max-w-2xl border rounded-lg">
       <div className="flex flex-col w-full gap-8 p-6">
         <div className="flex flex-col gap-2">
@@ -116,7 +114,6 @@ const AddMembers = () => {
         )}
       </div>
     </div>
-    // </MainContainer>
   );
 };
 

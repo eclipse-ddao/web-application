@@ -1,10 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import React from "react";
 import { toast } from "react-hot-toast";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
-import MainContainer from "../../components/common/MainContainer";
 import { useSelectProposal } from "../../hooks/mutations/useSelectProposal";
 import { useStorageProviderInfo } from "../../hooks/queries/useStorageProviderInfo";
 import { useSelectedProposalId } from "../../hooks/state/useAppState";
@@ -34,7 +32,6 @@ const StorageProviderDetail = () => {
   };
 
   return (
-    // <MainContainer heading="Storage Provider Details" active="big-file">
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-8 p-4 ">
         <div className="flex items-center justify-between">
@@ -76,7 +73,6 @@ const StorageProviderDetail = () => {
         </div>
       </div>
     </div>
-    // </MainContainer>
   );
 };
 

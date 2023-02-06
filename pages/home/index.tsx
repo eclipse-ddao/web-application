@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { toast } from "react-hot-toast";
-import MainContainer from "../../components/common/MainContainer";
 import { FileMutationDto } from "../../endpoints/files";
 import { FileResponse } from "../../endpoints/users";
 import { useAddFile } from "../../hooks/mutations/useAddFile";
@@ -125,7 +124,6 @@ const Home = () => {
   };
 
   return (
-    // <MainContainer heading="Getting started" active={"home"}>
     <div className="flex flex-col w-full gap-12 pr-12">
       <div className="flex flex-col w-full gap-2 pb-10 border-b border-grey-200">
         <div className="text-3xl font-semibold">
@@ -255,7 +253,6 @@ const Home = () => {
         </div>
       )}
     </div>
-    // </MainContainer>
   );
 };
 

@@ -27,7 +27,6 @@ const Profile = () => {
   }, [selectedDaoAddress, router]);
 
   return (
-    // <MainContainer heading="Profile" active={"profile"}>
     <>
       <div className="flex flex-col max-w-2xl gap-8 p-10 mx-auto border border-grey-200 rounded-xl ">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -70,7 +69,6 @@ const Profile = () => {
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>
     </>
-    // </MainContainer>
   );
 };
 
