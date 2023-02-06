@@ -99,3 +99,22 @@ export const RANDOMSTRING = "eclipsetest";
 export const LH_KEY = "4735c24d-5e77-42cd-8f00-604c8fe81a36";
 
 export const CID = "QmRjtZkAKxUGUT2s4g6AzGKTV1mbzm9cVR4NxYYpsJXcio";
+
+export const getStatus = (status: number) => {
+  switch (status) {
+    case 0: {
+      return "All";
+    }
+    case 1: {
+      return "Open";
+    }
+    case 2: {
+      return "Selected";
+    }
+    case 3: {
+      return "Closed";
+    }
+    default:
+      return "";
+  }
+};

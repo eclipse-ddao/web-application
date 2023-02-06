@@ -195,7 +195,7 @@ const Home = () => {
                 (click to decrypt and download file)
               </span>
             </div>
-            <div className="flex flex-row flex-wrap gap-4 pb-4 overflow-auto h-96">
+            <div className="flex flex-row flex-wrap items-start gap-4 pb-4 overflow-auto h-96">
               {files.map((file) => {
                 return (
                   <div

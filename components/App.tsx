@@ -97,8 +97,10 @@ function App() {
                 </div>
 
                 {/* <span className="px-6 py-4 rounded-md bg-cyan-300"></span> */}
-                <span className="font-bold text-white capitalize cursor-pointer hover:underline">
-                  Documentation
+                <span
+                  onClick={() => router.push("/storage-provider/home")}
+                  className="font-bold text-white capitalize cursor-pointer hover:underline">
+                  Storage provider?
                 </span>
               </div>
             </div>

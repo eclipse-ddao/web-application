@@ -107,7 +107,10 @@ export const addMemberSmartContract = async (addresses: Addresses) => {
     signer
   );
 
+  console.log("__ADDMEMBER CONTRACT", contract);
+
   const res = await contract.addMember(addresses.newMemberAddress);
+  console.log("___RES", res);
   await res.wait();
 };
 

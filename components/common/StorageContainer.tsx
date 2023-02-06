@@ -9,15 +9,16 @@ import {
 import LeftColorBar from "./LeftColorBar";
 import LeftInfoBar from "./LeftInfoBar";
 import RightBar from "./RightBar";
+import SPMenu from "./SPMenu";
 
-type HomeContainerProps = {
+type StorageContainerContainerProps = {
   children: ReactNode;
   heading: string;
   active: string;
   showMenu?: boolean;
 };
 
-const MainContainer: FC<HomeContainerProps> = ({
+const StorageContainer: FC<StorageContainerContainerProps> = ({
   children,
   heading,
   active,
@@ -31,7 +32,6 @@ const MainContainer: FC<HomeContainerProps> = ({
 
   useEffect(() => {
     if (!walletAddress) {
-      // router.push("/getting-started");
       connectWalletMutation(
         {},
         {
@@ -45,7 +45,6 @@ const MainContainer: FC<HomeContainerProps> = ({
 
   return (
     <div className="relative flex w-screen h-screen bg-fixed bg-white bg-cover font-poppins bg-paper">
-      <LeftColorBar />
       <div className="flex-1">
         <div className="grid items-center grid-cols-12 gap-4 border-b border-grey-200">
           <div className="flex items-center col-span-3 gap-1 p-8 py-4">
@@ -80,7 +79,8 @@ const MainContainer: FC<HomeContainerProps> = ({
           </div>
         </div>
         <div className="grid grid-cols-12 gap-4">
-          {showMenu && <LeftInfoBar active={active} />}
+          {/* {showMenu && <LeftInfoBar active={active} />} */}
+          <SPMenu active={active} />
           <div
             className={`relative w-full overflow-y-auto ${
               showMenu ? "max-w-4xl" : ""
@@ -89,9 +89,8 @@ const MainContainer: FC<HomeContainerProps> = ({
           </div>
         </div>
       </div>
-      {showMenu && <RightBar />}
     </div>
   );
 };
 
-export default MainContainer;
+export default StorageContainer;

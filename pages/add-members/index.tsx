@@ -46,6 +46,7 @@ const AddMembers = () => {
           });
         },
         onError(err) {
+          console.log("ERROR", err);
           toast.error("Some error while creating");
         },
       }
@@ -97,7 +98,7 @@ const AddMembers = () => {
                   </svg>
                 </div>
               ) : (
-                "AddMember"
+                "Add Member"
               )}
             </Button>
           </div>
