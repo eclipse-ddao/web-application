@@ -57,7 +57,11 @@ const LeftColorBar = () => {
               active ? "border-[#448FFF]" : "border-[#BCD7FF]"
             }`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={dao.avatar_url} alt="Dao Avatar" />
+            <img
+              src={dao.avatar_url}
+              alt="Dao Avatar"
+              className="object-cover"
+            />
           </div>
         );
       })}

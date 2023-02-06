@@ -35,7 +35,7 @@ const RightBar = () => {
           height="250"
         />
       </div>
-      <span className="font-medium">members</span>
+      <span className="font-medium">Members</span>
 
       <div className="flex flex-col gap-2">
         {members?.map((member) => (
@@ -76,19 +76,27 @@ const ContactInfo: FC<ContactType> = ({ image, name, address }) => {
       <div className="w-10 h-10 overflow-hidden rounded-full">
         {image?.length > 0 ? (
           //  eslint-disable-next-line @next/next/no-img-element
-          <img src={image} alt={"member image"} />
+          <img src={image} alt={"member image"} className="object-cover" />
         ) : (
           //  eslint-disable-next-line @next/next/no-img-element
           <img
             src={
               "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
             }
+            className="object-cover"
             alt={"member image"}
           />
         )}
       </div>
       {name?.length > 0 ? (
-        <span className="text-xs font-semibold text-grey-800 ">{name}</span>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs font-semibold text-grey-800 ">{name}</span>
+          <div className="text-[10px] text-grey-500">
+            {address.toString().slice(0, 4) +
+              "..." +
+              address.toString().slice(-4)}
+          </div>
+        </div>
       ) : (
         <span className="text-xs font-semibold text-grey-800">
           {address.toString().slice(0, 4) +
