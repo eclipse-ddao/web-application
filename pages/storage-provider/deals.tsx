@@ -1,5 +1,4 @@
 import { Dialog } from "@headlessui/react";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import Button from "../../components/common/Button";

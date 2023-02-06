@@ -1,47 +1,19 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import Button from "../../components/common/Button";
+import React from "react";
 import Input from "../../components/common/Input";
 
 import MainContainer from "../../components/common/MainContainer";
-import Select from "../../components/common/Select";
 import TextArea from "../../components/common/TextArea";
-import { useAddBigFile } from "../../hooks/mutations/useAddBigFile";
 import { useBigFileInfo } from "../../hooks/queries/useBigFileInfo";
 
-import {
-  useSelectedDaoAddress,
-  useSelectedProposalId,
-  useWalletAddress,
-} from "../../hooks/state/useAppState";
+import { useSelectedProposalId } from "../../hooks/state/useAppState";
 import { getStatus } from "../../utils/constants";
 
-const initialValue = {
-  duration: 0,
-  size_in_gb: 0,
-  base_bounty: 0,
-  file_type: 1, // DROPDOWN -> based on value 1- link 2- hardware delivery 3- filecoin cid
-  name: "",
-  description: "",
-  dao_contract_address: "",
-  uploaded_by: "",
-  expiry: new Date(),
-};
-
 const BigFileDetail = () => {
-  const queryClient = useQueryClient();
   const router = useRouter();
   const bigFileId = router.query.id;
-  const [selectedDaoAddress] = useSelectedDaoAddress();
-  const [walletAddress] = useWalletAddress();
   const [, setSelectedProposalId] = useSelectedProposalId();
-  const { mutate: addBigFileMutation, isLoading: addBigFileLoading } =
-    useAddBigFile();
-  const { data, isLoading: bigFileInfoLoading } = useBigFileInfo(
-    bigFileId as string
-  );
-  const [isOpen, setIsOpen] = useState(false);
+  const { data } = useBigFileInfo(bigFileId as string);
 
   const fileType = () => {
     switch (data?.file_type) {

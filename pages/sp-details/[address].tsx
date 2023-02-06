@@ -10,7 +10,6 @@ import { useStorageProviderInfo } from "../../hooks/queries/useStorageProviderIn
 import { useSelectedProposalId } from "../../hooks/state/useAppState";
 
 const StorageProviderDetail = () => {
-  const queryClient = useQueryClient();
   const router = useRouter();
   const spAddress = router.query.address;
   const [selectedProposalId, setSelectedProposalId] = useSelectedProposalId();

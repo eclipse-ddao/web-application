@@ -6,7 +6,6 @@ import Button from "../../components/common/Button";
 import Alert from "../../components/common/Alert";
 import Image from "next/image";
 import { useCreateDataDao } from "../../hooks/mutations/useCreateDataDao";
-import { useDaoInfo } from "../../hooks/queries/useDaoInfo";
 import {
   useSelectedDaoAddress,
   useWalletAddress,
@@ -33,10 +32,8 @@ const DataDao = () => {
   } = useDataDaoSmartContract();
 
   const [, setWalletAddress] = useWalletAddress();
-  const [selectedDaoAddress, setSelectedDaoAddress] = useSelectedDaoAddress();
+  const [, setSelectedDaoAddress] = useSelectedDaoAddress();
   const router = useRouter();
-
-  const { data: daos, isLoading: daoLoading } = useDaoInfo(selectedDaoAddress);
 
   const [data, setData] = useState(initialValue);
   const queryClient = useQueryClient();
@@ -156,7 +153,6 @@ the team section in your data dao."
           </div>
         )}
       </div>
-      {/* {JSON.stringify(daos)} */}
       <div className="fixed w-56 h-56 -bottom-12 right-2">
         <Image src={"/images/cube.png"} alt="Cube" width="1352" height="1076" />
       </div>

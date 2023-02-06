@@ -5,10 +5,8 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import Button from "../../../components/common/Button";
 import Input from "../../../components/common/Input";
-import MainContainer from "../../../components/common/MainContainer";
 import StorageContainer from "../../../components/common/StorageContainer";
 import TextArea from "../../../components/common/TextArea";
-import { useAddBigFile } from "../../../hooks/mutations/useAddBigFile";
 import { useProposeStroage } from "../../../hooks/mutations/useProposeStroage";
 import { useBigFileInfo } from "../../../hooks/queries/useBigFileInfo";
 import {
@@ -16,23 +14,10 @@ import {
   useWalletAddress,
 } from "../../../hooks/state/useAppState";
 
-const initialValue = {
-  duration: 0,
-  size_in_gb: 0,
-  base_bounty: 0,
-  file_type: 1, // DROPDOWN -> based on value 1- link 2- hardware delivery 3- filecoin cid
-  name: "",
-  description: "",
-  dao_contract_address: "",
-  uploaded_by: "",
-  expiry: new Date(),
-};
-
 const BigFileDetail = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const bigFileId = router.query.id;
-  const [selectedDaoAddress] = useSelectedDaoAddress();
   const [walletAddress] = useWalletAddress();
 
   const { data } = useBigFileInfo(bigFileId as string);
