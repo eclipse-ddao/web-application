@@ -53,7 +53,7 @@ const DataDao = () => {
               console.log(result);
               setData(initialValue);
               toast.success("Successfully added dao");
-              queryClient.invalidateQueries(["user", res.walletAddress]);
+              queryClient.fetchQuery(["user", res.walletAddress]);
               setSelectedDaoAddress(res.contractAddress);
               router.push("/home");
             },
