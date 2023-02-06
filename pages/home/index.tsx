@@ -241,7 +241,7 @@ const Home = () => {
                           href={fileUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="font-semibold text-amber-500">
+                          className="font-semibold text-amber-500 hover:text-amber-600 active:text-amber-500 hover:underline">
                           View File
                         </a>
                       )}
