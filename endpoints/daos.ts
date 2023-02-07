@@ -92,7 +92,7 @@ export const dataDaoSmartContract = async (data: any) => {
 };
 
 export const addMemberSmartContract = async (addresses: Addresses) => {
-  console.log("addMemberSmartContract");
+  console.log("addMemberSmartContract", { addresses });
 
   const ethereum = (window as any).ethereum;
   const accounts = await ethereum.request({
@@ -102,7 +102,7 @@ export const addMemberSmartContract = async (addresses: Addresses) => {
   const walletAddress = accounts[0];
   const signer = provider.getSigner(walletAddress);
   const contract = new ethers.Contract(
-    addresses.daoAddress,
+    addresses.daoAddress.toLowerCase(),
     ADD_MEMBER_DAO_ABI,
     signer
   );

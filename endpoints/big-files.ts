@@ -1,3 +1,5 @@
+import { ethers } from "ethers";
+import { ADD_MEMBER_DAO_ABI } from "../utils/constants";
 import { api } from "./axios";
 
 export type BigFileMutationDto = {
@@ -143,4 +145,46 @@ export const makeDeal = async (data: MakeDealDto) => {
     method: "post",
     data,
   });
+};
+
+export type SelectSPSmartContract = {
+  daoAddress: string;
+  spAddress: string;
+};
+
+export const selectSPSmartContract = async (data: SelectSPSmartContract) => {
+  const ethereum = (window as any).ethereum;
+  const accounts = await ethereum.request({
+    method: "eth_requestAccounts",
+  });
+  const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+  const walletAddress = accounts[0];
+  const signer = provider.getSigner(walletAddress);
+  const contract = new ethers.Contract(
+    data.daoAddress.toLowerCase(),
+    ADD_MEMBER_DAO_ABI,
+    signer
+  );
+
+  console.log("__ADDMEMBER CONTRACT", contract);
+
+  // const res = await contract.addMember(addresses.newMemberAddress);
+  const tx = await contract.addBigFile(
+    {
+      id: 2,
+      proposer: walletAddress.toLowerCase(),
+      bounty: 1,
+      sizeInGb: 1,
+      duration: 1,
+      startedAt: 0,
+      spAddress: data.spAddress.toLowerCase(),
+      status: 1,
+    },
+    {
+      gasLimit: 10000000,
+    }
+  );
+
+  // console.log("___RES", res);
+  // await res.wait();
 };

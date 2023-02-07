@@ -72,7 +72,7 @@ export const encrytpAndUploadFile = async (data: EncryptAndUploadFile) => {
         standardContractType: "Custom",
         inputArrayType: ["address"],
         outputType: "bool",
-        contractAddress: data.daoAddress,
+        contractAddress: data.daoAddress.toLowerCase(),
         returnValueTest: { comparator: "==", value: "true" },
         parameters: [":userAddress"],
       },

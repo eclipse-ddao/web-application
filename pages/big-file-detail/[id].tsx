@@ -36,7 +36,8 @@ const BigFileDetail = () => {
         <div className="flex">
           <div
             className="font-semibold cursor-pointer text-brand-700 hover:text-brand-800 hover:underline"
-            onClick={() => router.back()}>
+            onClick={() => router.back()}
+          >
             Go back
           </div>
         </div>
@@ -90,46 +91,48 @@ const BigFileDetail = () => {
               <div className="flex-1 p-4">Selected</div>
               <div className="flex-1 p-4"></div>
             </div>
-            {data?.proposals?.map((data, index) => {
+            {data?.proposals?.map((proposal, index) => {
               return (
                 <div
                   key={index}
-                  className="flex flex-row text-black bg-white border-b border-grey-200">
+                  className="flex flex-row text-black bg-white border-b border-grey-200"
+                >
                   <div className="flex-1 p-4">
-                    {new Date(data?.created_at).toLocaleDateString()}
+                    {new Date(proposal?.created_at).toLocaleDateString()}
                   </div>
                   <div className="flex-1 p-4">
-                    {data?.storage_provider_address.toString().slice(0, 5) +
+                    {proposal?.storage_provider_address.toString().slice(0, 5) +
                       "..." +
-                      data.storage_provider_address.toString().slice(-5)}
+                      proposal.storage_provider_address.toString().slice(-5)}
                   </div>
-                  <div className="flex-1 p-4">{data?.requested_bounty} </div>
+                  <div className="flex-1 p-4">
+                    {proposal?.requested_bounty}{" "}
+                  </div>
                   <div className="flex justify-start flex-1 p-4">
-                    {data?.is_selected ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-green-500">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    ) : null}
+                    {proposal?.is_selected ? (
+                      <div className="flex items-center justify-center px-3 py-1 text-white rounded-full bg-brand-700">
+                        {"SELECTED"}
+                      </div>
+                    ) : data.status == 1 ? (
+                      <div className="flex items-center justify-center px-3 py-1 text-white rounded-full bg-brand-600">
+                        {"PENDING"}
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center px-3 py-1 text-white rounded-full bg-brand-700">
+                        {"NOT SELECTED"}
+                      </div>
+                    )}
                   </div>
                   <div className="flex justify-end flex-1 p-4">
                     <button
                       onClick={() => {
-                        setSelectedProposalId(data.id);
+                        setSelectedProposalId(proposal.id);
                         router.push(
-                          `/sp-details/${data.storage_provider_address}`
+                          `/sp-details/${proposal.storage_provider_address}`
                         );
                       }}
-                      className="text-sm font-semibold uppercase font-raleway text-brand-500 hover:text-brand-600 active:text-blue-500">
+                      className="text-sm font-semibold uppercase font-raleway text-brand-500 hover:text-brand-600 active:text-blue-500"
+                    >
                       View
                     </button>
                   </div>

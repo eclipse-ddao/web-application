@@ -3,26 +3,46 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
+import { selectSPSmartContract } from "../../endpoints/big-files";
 import { useSelectProposal } from "../../hooks/mutations/useSelectProposal";
+import { useSelectSPSmartContract } from "../../hooks/mutations/useSelectSPSmartContract";
 import { useStorageProviderInfo } from "../../hooks/queries/useStorageProviderInfo";
-import { useSelectedProposalId } from "../../hooks/state/useAppState";
+import {
+  useSelectedDaoAddress,
+  useSelectedProposalId,
+} from "../../hooks/state/useAppState";
 
 const StorageProviderDetail = () => {
   const router = useRouter();
   const spAddress = router.query.address;
   const [selectedProposalId, setSelectedProposalId] = useSelectedProposalId();
+  const { mutate, isLoading } = useSelectSPSmartContract();
   const { data: storageProviderInfo } = useStorageProviderInfo(spAddress);
+  const [daoAddress] = useSelectedDaoAddress();
   const { mutate: selectProposalMutation, isLoading: selectProposalLoading } =
     useSelectProposal();
 
   const handleSubmit = () => {
-    selectProposalMutation(
-      { proposal_id: selectedProposalId },
+    mutate(
+      {
+        daoAddress: daoAddress,
+        spAddress: spAddress,
+      },
       {
         onSuccess(result) {
-          toast.success("Successfully selected the storage provider");
-          setSelectedProposalId(0);
-          router.back();
+          selectProposalMutation(
+            { proposal_id: selectedProposalId },
+            {
+              onSuccess(result) {
+                toast.success("Successfully selected the storage provider");
+                setSelectedProposalId(0);
+                router.back();
+              },
+              onError(err) {
+                toast.error("Some error selecting storage provider");
+              },
+            }
+          );
         },
         onError(err) {
           toast.error("Some error selecting storage provider");
@@ -37,7 +57,8 @@ const StorageProviderDetail = () => {
         <div className="flex items-center justify-between">
           <div
             className="font-semibold cursor-pointer text-brand-700 hover:text-brand-800 hover:underline"
-            onClick={() => router.back()}>
+            onClick={() => router.back()}
+          >
             Go back
           </div>
           <Button onClick={handleSubmit}>Select</Button>
